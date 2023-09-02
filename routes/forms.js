@@ -25,9 +25,8 @@ app.post('/createform', async (req, res) => {
 //get form
 app.get('/getform', async (req, res) => {
     // const o_id = new mongo.ObjectId(req.body.formId);
-    const form = await Form.find({ 'author': 0 })
-        .then(() => {
-            console.log(form)
+    const form = Form.find({'_id': req.body.formid})
+        .then((form) => {
             res.status(200).send(form);
         })
         .catch((err) => {
